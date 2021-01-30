@@ -29,7 +29,7 @@ class MsgsController {
         return info;
     }
 
-    //remove user by Id
+    //remove msg by Id
     static async remove (req, res) {
         const info = await MsgModel.findByIdAndRemove(req.params.id);
         return info;

@@ -16,6 +16,10 @@ const msgSchema = new Schema({
     created: {
         type: Date, 
         default: Date.now
+    },
+    edited: {
+        type: Boolean,
+        default: false
     }
 
 });
