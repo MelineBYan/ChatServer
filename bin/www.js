@@ -5,9 +5,9 @@ const http = require('http');
 const dotenv = require('dotenv');
 const socketIO = require('socket.io');
 const { mongoDBUrl } = require('../config');
-const RoomModel = require("../models/rooms.model");
-const UserModel = require("../models/users.model");
-const MsgsModel = require("../models/messages.model");
+const RoomModel = require("../src/models/rooms.model");
+const UserModel = require("../src/models/users.model");
+const MsgModel = require("../src/models/messages.model");
 const mongoose = require("mongoose");
 
 const port = normalizePort(process.env.PORT || '3000');

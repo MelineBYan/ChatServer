@@ -19,7 +19,8 @@ const userSchema = new Schema({
     },
     roomId: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Room'
+        ref: 'Room',
+        default: ""
     },
     online: {
         type: Boolean, 
