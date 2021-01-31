@@ -1,13 +1,19 @@
 const MsgModel = require("../models/messages.model");
 const RoomModel = require("../models/rooms.model");
 
-class UsersController {
+class UserController {
 
     //get user by Id
     static async getOne (req, res) {
         const info = await RoomModel.find({userId: req.params.id});
         return info;
     }
+
+ //get users by room Id  room/users
+ static async getAll (req, res) {
+    const info = await RoomModel.find({roomId: req.params.id});
+    return info;
+}
 
     //get users by room Id  room/users
     static async getAllUsersByRoomId (req, res) {
@@ -34,3 +40,4 @@ class UsersController {
     }
 
 }
+module.exports = UserController;

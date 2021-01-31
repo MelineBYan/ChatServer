@@ -4,27 +4,17 @@ const debug = require('debug')('node-chat:server');
 const http = require('http');
 const dotenv = require('dotenv');
 const socketIO = require('socket.io');
-const { mongoDBUrl } = require('../config');
 const RoomModel = require("../src/models/rooms.model");
 const UserModel = require("../src/models/users.model");
 const MsgModel = require("../src/models/messages.model");
-const mongoose = require("mongoose");
+const connection = require('../connection');
+
 
 const port = normalizePort(process.env.PORT || '3000');
 const server = http.createServer(app);
 app.set('port', port);
 dotenv.config();
 const io = socketIO(server);
-
-mongoose.connect(mongoDBUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}, (err) => {
-    if (err) {
-        return console.log(err.message)
-    }
-    console.log("Connected!")
-});
 
 
 server.listen(port);``

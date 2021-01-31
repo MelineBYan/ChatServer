@@ -1,7 +1,7 @@
 const MsgModel = require("../models/messages.model");
 const RoomModel = require("../models/rooms.model");
 
-class MsgsController {
+module.exports = class MsgsController {
 
     //get message by Id
     static async getOne (req, res) {
@@ -13,7 +13,8 @@ class MsgsController {
     static async getAllMsgsByRoomId (req, res) {
         const info = await MsgModel
         .find({roomId: req.params.id})
-        .sort({created: 1});
+        .sort({created: 1})
+        .populate({path: 'senderId', select: 'roomName'});
         return info;
     }
 
@@ -37,3 +38,4 @@ class MsgsController {
 
 
 }
+

@@ -20,3 +20,4 @@ class RoomController {
 
 
 }
+odule.exports = RoomController;
