@@ -4,22 +4,27 @@ const { Schema } = require("mongoose");
 const msgSchema = new Schema({
     senderId:   {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User' 
+        ref: 'User' ,
+        required: true
     },
-    roomId:  {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Room' 
-    },
+    // roomId:  {
+    //     type: mongoose.Schema.Types.ObjectId, 
+    //     ref: 'Room',
+    //     required: true 
+    // },
     text:  {
-        type: String
+        type: String,
+        required: true
     },
     created: {
         type: Date, 
-        default: Date.now
+        default: Date.now,
+       
     },
     edited: {
         type: Boolean,
-        default: false
+        default: false,
+        
     }
 
 });

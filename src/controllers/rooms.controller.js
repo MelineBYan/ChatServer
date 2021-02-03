@@ -7,17 +7,17 @@ class RoomController {
     static async getOne (req, res) {
         const info = await RoomModel
         .findOne({roomId: req.params.id});
-        return info;
+        res.send(info);
     }
    
     
 
     //get rooms
     static async getAll (req, res) {
-        const info = await RoomModel.find({roomId: req.params.id});
-        return info;
+        const info = await RoomModel.find();
+        res.send(info);
     }
 
 
 }
-odule.exports = RoomController;
+module.exports = RoomController;

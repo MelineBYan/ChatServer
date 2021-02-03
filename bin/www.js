@@ -16,10 +16,14 @@ app.set('port', port);
 dotenv.config();
 const io = socketIO(server);
 
+require('../sockets/index')(io);
 
-server.listen(port);``
+
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
 
 function normalizePort(val) {
   const port = parseInt(val, 10);

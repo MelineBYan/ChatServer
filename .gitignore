@@ -1,2 +1,14 @@
 node_modules/
 .env
+
+
+
+# onst user = new User({
+#         firstName: req.body.firstName,
+#         lastName: req.body.lastName,
+#         address: req.body.address,
+#         phone: req.body.phone,
+#         email: req.body.email,
+#         password: hashedPassword,
+#         role:req.body.role
+#     })
