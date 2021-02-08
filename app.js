@@ -11,9 +11,12 @@ const usersRouter = require('./src/routes/users');
 const msgsRouter = require('./src/routes/messages');
 const roomsRouter = require('./src/routes/rooms');
 
+
+
+
 const app = express();
 
-app.use(cors('*'));
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,6 +38,20 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
+  });
+
+  app.use((req, res, next) => {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  
+    // Pass to next layer of middleware
+    next();
   });
 
 module.exports = app;

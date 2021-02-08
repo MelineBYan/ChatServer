@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 router.get('/', RoomsController.getAll);
 router.get('/:id', RoomsController.getOne);
+router.get('/roomName', RoomsController.getUsers);
 
 
 

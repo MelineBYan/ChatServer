@@ -5,9 +5,9 @@ const roomSchema = new Schema({
     roomName:  { 
         type: String, 
         required: true,
-        enum: ['general', 'languages', 'literature', 'mathemathics', 'phisics', 'computer knowledge'],
-        default: 'general'
-    }
+        enum: ['languages', 'literature', 'mathemathics', 'phisics', 'computer knowledge'],
+    },
+    users: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model("Room", roomSchema);

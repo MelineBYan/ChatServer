@@ -6,52 +6,51 @@ module.exports = class MsgsController {
 
     //get message by Id
     static async getOne (req, res) {
-        console.log(req)
         const info = await MsgModel
-        .findOne({senderId: req.params.id});
+        .findOne({_id: req.params.id});
         return res.send(info);
     }
    
     //get msgs 
     static async getAll (req, res) {
-        console.log(req)
-        const info = await MsgModel.
-        find()
+        const info = await MsgModel
+        .find()
         .sort({created: -1})
-        .populate({path: 'senderId', select: 'name'});
+        .populate({path: 'senderId', select: 'name -_id'});
         return res.send(info);
     }
 
     //get messages by room Id
-    static async getAllByRoomId (req, res) {
-        console.log(req.params)
+    static async getAllByRoomName (req, res) {
         const info = await MsgModel
-        .find({roomId: ObjectId(req.params.id)})
+        .find({roomName: req.params.roomName})
         .sort({created: -1})
         .limit(50)
-        .populate({path: 'senderId', select: 'name'});
+        .populate({path: 'senderId', select: 'name -_id'});
         return res.send(info);
     }
 
     //create msg
     static async create (req, res) {
-        console.log(req)
-        const info = await MsgModel.create(req.body);
-        console.log('controller')
-        info.save()
+        const data = req.body;
+        const newMsg = {
+            senderId: data.userId,
+            to:data.roomName,
+            text: data.text
+
+        }
+        const info = await MsgModel.create(newMsg);
         return res.send(info);
     }
 
     //update msg by Id
     static async update (req, res) {
-        console.log(req.body)
         const info = await MsgModel.findByIdAndUpdate(req.params.id, req.body);
         return res.send(info);
     }
 
     //remove msg by Id
     static async remove (req, res) {
-        console.log(req)
         const info = await MsgModel.findByIdAndRemove(req.params.id);
         return res.send(info);
     }

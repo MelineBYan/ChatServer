@@ -17,11 +17,6 @@ const userSchema = new Schema({
         required: true,
         trim: true 
     },
-    // roomId: {
-    //     type: mongoose.Schema.Types.ObjectId, 
-    //     ref: 'Room',
-    //     default: '6016fc45532333097cf5134f'
-    // },
     online: {
         type: Boolean, 
         default: false

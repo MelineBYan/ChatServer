@@ -7,11 +7,11 @@ const msgSchema = new Schema({
         ref: 'User' ,
         required: true
     },
-    // roomId:  {
-    //     type: mongoose.Schema.Types.ObjectId, 
-    //     ref: 'Room',
-    //     required: true 
-    // },
+    to:  { 
+        type: String, 
+        required: true,
+        enum: ['languages', 'literature', 'mathemathics', 'phisics', 'computer knowledge'],
+    },
     text:  {
         type: String,
         required: true
@@ -20,13 +20,7 @@ const msgSchema = new Schema({
         type: Date, 
         default: Date.now,
        
-    },
-    edited: {
-        type: Boolean,
-        default: false,
-        
     }
-
 });
 
 module.exports = mongoose.model("Msg", msgSchema);

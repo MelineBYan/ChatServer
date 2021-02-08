@@ -4,14 +4,13 @@ const MsgsController = require('../controllers/messages.controller.js')
 
 
 router.get('/', function(req, res, next) {
-  
   console.log('msgs')
-next()
+  next()
 });
 router.get('/', MsgsController.getAll);
 router.post('/', MsgsController.create);
 router.get('/:id', MsgsController.getOne);
-router.get('/:roomId', MsgsController.getAllByRoomId);
+router.get('/roomName', MsgsController.getAllByRoomName);
 router.put('/:id', MsgsController.update);
 router.delete('/:id', MsgsController.remove);
 

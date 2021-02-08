@@ -7,6 +7,7 @@ form.addEventListener('submit', submitHandler);
 function submitHandler(e) {
     e.preventDefault();
     const formData = new FormData();
+    console.log(form.elements)
     formData.append('name', form.name.value);
     formData.append('email', form.email.value);
     formData.append('password', form.password.value);
@@ -21,4 +22,3 @@ function submitHandler(e) {
        console.log(err.message);
     })
 }
-
