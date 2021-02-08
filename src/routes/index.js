@@ -5,7 +5,7 @@ const path = require('path');
 /* GET home page. */
 router.get('/', function(req, res) {
   console.log('jgjg')
-  res.sendFile(path.join(__dirname, '..', '.', 'public', 'index.html'));
+  res.json("message": "Home Page");
 });
 
 module.exports = router;
