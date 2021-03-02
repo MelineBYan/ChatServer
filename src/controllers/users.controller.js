@@ -15,12 +15,16 @@ class UserController {
 
   //create user
   static async create(req, res) {
-    const info = await UserModel.create(req.body);
-    console.log("create a user");
-    // const room = await RoomModel.findOne({ roomName: "languages" });
-    // room.users.push(info._id);
-    // room.save();
-    return res.send(info);
+    try {
+      const info = await UserModel.create(req.body);
+      console.log("create a user");
+      // const room = await RoomModel.findOne({ roomName: "languages" });
+      // room.users.push(info._id);
+      // room.save();
+      return res.send(info);
+    } catch (err) {
+      return res.send({ message: err.message });
+    }
   }
 
   //update user by Id
